@@ -1,0 +1,13 @@
+{
+	"name": "tsolucio/DART",
+	"type": "corebos-extension",
+	"properties": {
+		"name": "Daily Activity Report Extension",
+		"description": "This extension permits you to see what changes happened in the application and by who each day.",
+		"keywords": ["Activity","Report","users","changes"],
+		"homepage": "http://corebos.org/documentation/doku.php?id=en:integrations:maps",
+		"version": "1.0",
+		"time": "2015-07-02",
+		"license": "VPL"
+	}
+}

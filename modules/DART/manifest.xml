@@ -1,0 +1,46 @@
+<?xml version='1.0'?>
+<module>
+<name>DART</name>
+<label>DART</label>
+<parent>Tools</parent>
+<type>extension</type>
+<version>1.1</version>
+<dependencies>
+<vtiger_version>5.1.0</vtiger_version>
+</dependencies>
+<license>
+	<inline><![CDATA[/*+**********************************************************************************
+ * The contents of this file are subject to the vtiger CRM Public License Version 1.1
+ * ("License"); You may not use this file except in compliance with the License
+ * The Original Code is:  vtiger CRM Open Source
+ * The Initial Developer of the Original Code is vtiger.
+ * Portions created by vtiger are Copyright (C) vtiger.
+ * All Rights Reserved.
+ ************************************************************************************/]]></inline>
+</license>
+<tables>
+<table>
+<name>vtiger_dart_recordchanges</name>
+<sql><![CDATA[CREATE TABLE `vtiger_dart_recordchanges` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module` varchar(150) DEFAULT NULL,
+  `crmid` int(11) DEFAULT NULL,
+  `smownerid` int(11) DEFAULT NULL,
+  `modifiedby` int(11) DEFAULT NULL,
+  `modifiedon` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_cols_constraint` (`module`,`crmid`,`smownerid`,`modifiedby`,`modifiedon`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8]]></sql>
+</table>
+</tables>
+<crons>
+<cron>
+<name>Daily Activity Reporting Tool</name>
+<frequency>86400</frequency>
+<status>1</status>
+<handler>cron/modules/DART/DARTCron.service</handler>
+<sequence>7</sequence>
+<description>DART – enables you to track the changes to records being made by users. The extension provides the ability to dispatch an email with a summary of changes which is sent by this process. Should be launched once a day.</description>
+</cron>
+</crons>
+</module>

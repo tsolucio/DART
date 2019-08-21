@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_dart_recordchanges</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_dart_recordchanges` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module` varchar(150) DEFAULT NULL,
+  `crmid` int(11) DEFAULT NULL,
+  `smownerid` int(11) DEFAULT NULL,
+  `modifiedby` int(11) DEFAULT NULL,
+  `modifiedon` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_cols_constraint` (`module`,`crmid`,`smownerid`,`modifiedby`,`modifiedon`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8]]></sql>
+		</table>
+	</tables>
+</schema>
