@@ -35,7 +35,7 @@ $smarty->assign('DAY', $daySelected);
 $smarty->assign('TODAY', $today);
 
 $smarty->assign('MODULE', $currentModule);
-$smarty->assign('CATEGORY', getParentTab());
+$smarty->assign('SINGLE_MOD', 'SINGLE_'.$currentModule);
 $smarty->assign('THEME', $theme);
 $smarty->assign('IMAGE_PATH', "themes/$theme/images/");
 $smarty->assign('MOD', $mod_strings);

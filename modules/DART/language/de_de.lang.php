@@ -10,8 +10,8 @@
 $mod_strings = array(
 'DART' => 'TAB',
 
-'LBL_NOTE_TEXT' => 'Bitte aktualisieren Sie die Anzeige. Um eine E-Mail mit täglichem Bericht zu erhalten müssen Sie das <br>
- DART Cron service, vorzugsweise in der Nacht, ausführen.',
+'LBL_NOTE_TEXT' => 'Bitte aktualisieren Sie die Anzeige. Um eine E-Mail mit täglichem Bericht zu erhalten müssen Sie das',
+'LBL_SELECT_TEXT' => 'DART Cron service, vorzugsweise in der Nacht, ausführen.',
 
 'LBL_UPDATES_FOR' => 'Das sind die aktuellen Informationen zum  ',
 'LBL_NO_UPDATES'  => 'Es gibt keine neuen Informationen zum ',

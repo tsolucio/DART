@@ -53,7 +53,7 @@ class DART extends DART_Core {
 
 		$group = array();
 
-		$moduleinfo = $adb->pquery("SELECT * FROM vtiger_entityname", array());
+		$moduleinfo = $adb->pquery('SELECT * FROM vtiger_entityname', array());
 
 		if (!$adb->num_rows($moduleinfo)) {
 			return $group;
@@ -69,7 +69,7 @@ class DART extends DART_Core {
 
 			while ($record = $adb->fetch_array($records)) {
 				$module = $row['modulename'];
-				$changeType = empty($record['modifier'])? "CREATED" : "UPDATED";
+				$changeType = empty($record['modifier'])? 'CREATED' : 'UPDATED';
 				$changeOwner = empty($record['modifier'])? $record['owner'] : $record['modifier'];
 
 				if ($this->permittedToView($module, $record['id']) === false) {
@@ -130,7 +130,7 @@ class DART_Core {
 		global $adb;
 		if (self::$usernameCache === false) {
 			self::$usernameCache = array();
-			$result = $adb->pquery("SELECT user_name, id FROM vtiger_users", array());
+			$result = $adb->pquery('SELECT user_name, id FROM vtiger_users', array());
 			while ($row = $adb->fetch_array($result)) {
 				self::$usernameCache[$row['id']] = $row['user_name'];
 			}
@@ -175,7 +175,7 @@ class DART_Core {
 	public function record_ChangesForTheDay($date) {
 		global $adb;
 
-		$sql = "SELECT setype, crmid, smownerid, modifiedby FROM vtiger_crmentity WHERE DATE(modifiedtime)=?";
+		$sql = 'SELECT setype, crmid, smownerid, modifiedby FROM vtiger_crmentity WHERE DATE(modifiedtime)=?';
 		$result = $adb->pquery($sql, array($date));
 
 		if (!$adb->num_rows($result)) {
@@ -192,7 +192,7 @@ class DART_Core {
 	 */
 	public function record_ChangesForTheModule($module, $crmid, $smownerid, $modifiedby, $date) {
 		global $adb;
-		$sql = "INSERT IGNORE INTO vtiger_dart_recordchanges(module, crmid, smownerid, modifiedby, modifiedon) VALUES (?, ?, ?, ?, ?)";
+		$sql = 'INSERT IGNORE INTO vtiger_dart_recordchanges(module, crmid, smownerid, modifiedby, modifiedon) VALUES (?, ?, ?, ?, ?)';
 		$adb->pquery($sql, array($module, $crmid, $smownerid, $modifiedby, $date));
 	}
 }

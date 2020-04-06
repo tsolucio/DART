@@ -11,7 +11,7 @@
 		<td style="background: #FFFFFF; border: 1px solid #DDDDFF; border-right: 0; padding: 5px;"><strong>{'LBL_USER'|@getTranslatedString:$MODULE}</strong></td>
 		<td style="background: #FFFFFF; border: 1px solid #DDDDFF; padding: 1px;"><strong>{'LBL_ACTION_PERFORMED'|@getTranslatedString:$MODULE}</strong></td>
 	</tr>
-	
+
 	{foreach item=GROUP key=USER from=$CHANGES}
 		<tr valign=top>
 			<td width="120px" nowrap="nowrap" style="background: #FFFFFF; border: 1px solid #DDDDFF; border-right: 0; padding: 0 5px;"><strong>{$USER}<strong></td>
@@ -21,7 +21,6 @@
 				{foreach item=RECORDS key=MODULE from=$GROUP}
 					<tr valign=top>
 						<td width="120px" nowrap="nowrap" style="background: #FFFFFF;">{$MODULE|@getTranslatedString:$MODULE}</td>
-				
 						<td style="background: #FFFFFF;">
 							<table cellpadding=3 cellspacing=0 border=0 style="font: inherit;">
 							{foreach item=RECORD from=$RECORDS}

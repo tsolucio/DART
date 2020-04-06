@@ -11,7 +11,8 @@ $mod_strings = array(
 'DART' => 'DART',
 'SINGLE_DART' => 'DART',
 
-'LBL_NOTE_TEXT' => 'To receive email of the report you need to schedule the DART Cron service, preferably at end-of-every day.<br>Please select a date to display activity below',
+'LBL_NOTE_TEXT' => 'To receive email of the report you need to schedule the DART Cron service, preferably at end-of-every day.',
+'LBL_SELECT_TEXT' => 'Please select a date to display activity below',
 
 'LBL_UPDATES_FOR' => 'Following are the updates for ',
 'LBL_NO_UPDATES'  => 'No updates available for ',

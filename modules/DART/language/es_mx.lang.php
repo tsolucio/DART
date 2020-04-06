@@ -11,7 +11,8 @@ $mod_strings = array(
 'DART' => 'Informe Actividad Diaria',
 'SINGLE_DART' => 'Informe Actividad Diaria',
 
-'LBL_NOTE_TEXT' => 'Para recibir un email con el informe, hay que activar el servicio de tarea programada, preferiblemente al final del día.<br>Selecciona una fecha para ver la actividad aquí',
+'LBL_NOTE_TEXT' => 'Para recibir un email con el informe, hay que activar el servicio de tarea programada, preferiblemente al final del día.',
+'LBL_SELECT_TEXT' => 'Selecciona una fecha para ver la actividad aquí',
 
 'LBL_UPDATES_FOR' => 'Estas son las actualizaciones disponibles para ',
 'LBL_NO_UPDATES'  => 'No hay actualizaciones disponibles para ',

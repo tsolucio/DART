@@ -7,13 +7,16 @@
  * All Rights Reserved.
  ************************************************************************************}
 <p>{$SITE_URL}</p>
-<p style="font: 12px Arial, sans-serif;">
+<p class=" slds-page-header__meta-text">
 {if $CHANGES}
 	<i>{'LBL_UPDATES_FOR'|@getTranslatedString:$MODULE} <b>{$DAY}</b></i>
 {else}
 	<i>{'LBL_NO_UPDATES'|@getTranslatedString:$MODULE}<b>{$DAY}</b></i>
 {/if}
+{if $DAY == $TODAY}
+	<img src='{$BASEURL}themes/images/reload.gif' border=0> <a href='{$BASEURL}index.php?module={$MODULE}&action=index&_refresh=true'>{'LBL_REFRESH_NOW'|@getTranslatedString:$MODULE}</a>
+{/if}
 </p>
 {if $CHANGES}
-	{include file='modules/DART/htmlreport.tpl'}
+	{include file='modules/DART/htmlscrreport.tpl'}
 {/if}
