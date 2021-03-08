@@ -69,7 +69,7 @@ class DART extends DART_Core {
 
 			while ($record = $adb->fetch_array($records)) {
 				$module = $row['modulename'];
-				$changeType = empty($record['modifier'])? 'CREATED' : 'UPDATED';
+				$changeType = $record['haschanged'] ? 'UPDATED' : 'CREATED';
 				$changeOwner = empty($record['modifier'])? $record['owner'] : $record['modifier'];
 
 				if ($this->permittedToView($module, $record['id']) === false) {
@@ -112,9 +112,10 @@ class DART extends DART_Core {
 		if ($selectcolumn != $idcolumn) {
 			$selectcolumn .= ' as title, ' . $idcolumnalias;
 		}
-		return sprintf("SELECT $selectcolumn, modifiedby as modifier, smownerid as owner, module
-			FROM $table INNER JOIN vtiger_dart_recordchanges ON 
-			$table.$idcolumn = vtiger_dart_recordchanges.crmid AND DATE(modifiedon) = ?");
+		return "SELECT $selectcolumn, modifiedby as modifier, smownerid as owner, module, createdtime!=modifiedtime as haschanged
+			FROM $table
+			INNER JOIN vtiger_dart_recordchanges ON $table.$idcolumn = vtiger_dart_recordchanges.crmid AND modifiedon=?
+			INNER JOIN vtiger_crmentity on vtiger_crmentity.crmid=vtiger_dart_recordchanges.crmid";
 	}
 }
 
