@@ -112,7 +112,7 @@ class DART extends DART_Core {
 		if ($selectcolumn != $idcolumn) {
 			$selectcolumn .= ' as title, ' . $idcolumnalias;
 		}
-		return "SELECT $selectcolumn, modifiedby as modifier, smownerid as owner, module, createdtime!=modifiedtime as haschanged
+		return "SELECT $selectcolumn, vtiger_dart_recordchanges.modifiedby as modifier, vtiger_dart_recordchanges.smownerid as owner, module, createdtime!=modifiedtime as haschanged
 			FROM $table
 			INNER JOIN vtiger_dart_recordchanges ON $table.$idcolumn = vtiger_dart_recordchanges.crmid AND modifiedon=?
 			INNER JOIN vtiger_crmentity on vtiger_crmentity.crmid=vtiger_dart_recordchanges.crmid";
