@@ -38,7 +38,7 @@
 <name>Daily Activity Reporting Tool</name>
 <frequency>86400</frequency>
 <status>1</status>
-<handler>cron/modules/DART/DARTCron.service</handler>
+<handler>modules/DART/DARTCron.php</handler>
 <sequence>7</sequence>
 <description>DART – enables you to track the changes to records being made by users. The extension provides the ability to dispatch an email with a summary of changes which is sent by this process. Should be launched once a day.</description>
 </cron>
