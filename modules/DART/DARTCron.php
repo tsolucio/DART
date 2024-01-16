@@ -11,8 +11,10 @@
 /**
  * Turn-off PHP error reporting & request max timeout
  */
-error_reporting(0);
-set_time_limit(0);
+try {
+	error_reporting(0);
+	set_time_limit(0);
+} catch(Exception $e) { }
 $Vtiger_Utils_Log = false;
 include_once 'vtlib/Vtiger/Module.php';
 require_once 'modules/Emails/mail.php';
