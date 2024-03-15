@@ -9,14 +9,27 @@
  ************************************************************************************/
 
 $mod_strings = array(
-	'ModuleName' => 'Module Name',
-	'SINGLE_ModuleName' => 'Module Name',
-	'ModuleName ID' => 'Module Name ID',
+'DART' => 'Journal des activités',
+'SINGLE_DART' => 'Journal activité',
 
-	'LBL_CUSTOM_INFORMATION' => 'Custom Information',
-	'LBL_MODULEBLOCK_INFORMATION' => 'ModuleBlock Information',
-	'LBL_DESCRIPTION_INFORMATION' => 'Description',
+'LBL_NOTE_TEXT' => 'To receive email of the report you need to schedule the DART Cron service, preferably at end-of-every day.',
+'LBL_SELECT_TEXT' => 'Please select a date to display activity below',
 
-	'ModuleFieldLabel' => 'ModuleFieldLabel Text',
+'LBL_UPDATES_FOR' => 'Ici les dernières modifications enregistrées ',
+'LBL_NO_UPDATES'  => 'Pas de modifications ',
+'LBL_REFRESH_NOW' => 'Date actualisation ',
+
+'LBL_NO_ACTIVITY_DETECTED' => 'Pas de nouvelles activités détectées',
+
+'LBL_ACTION_PERFORMED' => 'Action réalisée',
+
+'CREATED' => 'CREE',
+'UPDATED' => 'MODIFIE',
+'ActivityUpdate' => 'Activité du jour : $date$',
+'NoActivity' => 'Aucune activité pour ce jour : $date$',
+'Daily Activity Reporting Tool' => 'Outil de rapport activité',
+'Usuario' => 'Utilisateur',
+'Action performed' => 'Action réalisée',
+'Following are the updates for' => 'Voici les mises à jour du ',
 );
 ?>

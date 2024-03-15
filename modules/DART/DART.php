@@ -30,7 +30,7 @@ class DART extends DART_Core {
 		$rows = array();
 		if ($adb->num_rows($result)) {
 			while ($resultrow = $adb->fetch_array($result)) {
-				$row = array ('name' => decode_html($resultrow['name']));
+				$row = array('name' => decode_html($resultrow['name']));
 				$row['email'] = empty($resultrow['email1'])? $resultrow['email2'] : $resultrow['email1'];
 				$rows[] = $row;
 			}
