@@ -41,14 +41,14 @@ class DART extends DART_Core {
 	/**
 	 * Gather the changes of record by-user-by-module
 	 */
-	public function report_GatherChangedRecordDetails($fordate) {
-		return $this->report_GatherChangesByUserAndModuleForTheDay($fordate);
+	public function report_GatherChangedRecordDetails($fordate, $foruser = '') {
+		return $this->report_GatherChangesByUserAndModuleForTheDay($fordate, $foruser);
 	}
 
 	/**
 	 * Gather the changes of record by-user-by-module-for the day
 	 */
-	public function report_GatherChangesByUserAndModuleForTheDay($date) {
+	public function report_GatherChangesByUserAndModuleForTheDay($date, $user = '') {
 		global $adb;
 
 		$group = array();
@@ -60,8 +60,12 @@ class DART extends DART_Core {
 		}
 
 		while ($row = $adb->fetch_array($moduleinfo)) {
-			$query = $this->report_PrepareQueryForTheModule($row['modulename'], $row['tablename'], $row['entityidfield'], $row['fieldname']);
-			$records = $adb->pquery($query, array($date));
+			$query = $this->report_PrepareQueryForTheModule($row['modulename'], $row['tablename'], $row['entityidfield'], $row['fieldname'], $user != '');
+			if ($user == '') {
+				$records = $adb->pquery($query, array($date));
+			} else {
+				$records = $adb->pquery($query, array($date, $user));
+			}
 
 			if (!$adb->num_rows($records)) {
 				continue;
@@ -96,7 +100,7 @@ class DART extends DART_Core {
 	/**
 	 * Query to pickup the changes across all the module.
 	 */
-	public function report_PrepareQueryForTheModule($module, $table, $idcolumn, $titlecolumn) {
+	public function report_PrepareQueryForTheModule($module, $table, $idcolumn, $titlecolumn, $filter_user = false) {
 		if (strpos($titlecolumn, ',') > 0) {
 			$titlecolumn = 'concat('.str_replace(',', ",' ',", $titlecolumn).')';
 		}
@@ -115,7 +119,7 @@ class DART extends DART_Core {
 		return "SELECT $selectcolumn, vtiger_dart_recordchanges.modifiedby as modifier, vtiger_dart_recordchanges.smownerid as owner, module, createdtime!=modifiedtime as haschanged
 			FROM $table
 			INNER JOIN vtiger_dart_recordchanges ON $table.$idcolumn = vtiger_dart_recordchanges.crmid AND modifiedon=?
-			INNER JOIN vtiger_crmentity on vtiger_crmentity.crmid=vtiger_dart_recordchanges.crmid";
+			INNER JOIN vtiger_crmentity on vtiger_crmentity.crmid=vtiger_dart_recordchanges.crmid".($filter_user ? ' AND modifiedby=?' : '');
 	}
 }
 
@@ -173,11 +177,16 @@ class DART_Core {
 	/**
 	 * Record the changes for the day
 	 */
-	public function record_ChangesForTheDay($date) {
+	public function record_ChangesForTheDay($date, $user = '') {
 		global $adb;
 
-		$sql = 'SELECT setype, crmid, smownerid, modifiedby FROM vtiger_crmentity WHERE DATE(modifiedtime)=?';
-		$result = $adb->pquery($sql, array($date));
+		if ($user == '') {
+			$sql = 'SELECT setype, crmid, smownerid, modifiedby FROM vtiger_crmentity WHERE DATE(modifiedtime)=?';
+			$result = $adb->pquery($sql, array($date));
+		} else {
+			$sql = 'SELECT setype, crmid, smownerid, modifiedby FROM vtiger_crmentity WHERE DATE(modifiedtime)=? AND modifiedby = ?';
+			$result = $adb->pquery($sql, array($date, $user));
+		}
 
 		if (!$adb->num_rows($result)) {
 			return;

@@ -13,6 +13,36 @@
 <div class="slds-modal__container slds-p-around_none slds-card" style="min-height: 350px;display:block;">
 	<div class="slds-grid slds-gutters">
 		<div class="slds-col slds-size_4-of-6 slds-page-header__meta-text">
+			{assign var="fldname" value=$USERPICKLIST[2][0]}
+			{assign var="fldvalue" value=$USERPICKLIST[3][0]}
+			{assign var="userselected" value=$USERSELECTED}
+			{assign var=check value=1}
+			<div id="_{$fldname}" width="30%" class="slds-m-left_small slds-m-bottom_medium">
+				<span style='display:none;' id='{$fldname}_hidden'></span>
+				{foreach key=key_one item=arr from=$fldvalue}
+					{foreach key=sel_value item=value from=$arr}
+						{if $value ne ''}
+							{assign var=check value=$check*0}
+						{else}
+							{assign var=check value=$check*1}
+						{/if}
+					{/foreach}
+				{/foreach}
+				<span class="slds-m-left_small">{'LBL_SELECT_USER'|@getTranslatedString:$MODULE}</span>
+				<span id="assign_user" style="display:block">
+					<select name="{$fldname}" id="{$fldname}" class="small">
+						{foreach key=key_one item=arr from=$fldvalue}
+							{foreach key=sel_value item=value from=$arr}
+								{if $key_one == $userselected}
+									<option value="{$key_one}" selected>{$sel_value}</option>
+								{else}
+									<option value="{$key_one}">{$sel_value}</option>
+								{/if}
+							{/foreach}
+						{/foreach}
+					</select>
+				</span>
+			</div>
 			<span class="slds-m-left_small">{'LBL_SELECT_TEXT'|@getTranslatedString:$MODULE}</span>
 			<!-- Calendar setup -->
 			<div id='_cal' style="max-width: 310px;" class="slds-m-left_small"></div>
@@ -25,8 +55,9 @@
 						if (mm < 10) mm = "0" + mm;
 						if (dd < 10) dd = "0" + dd;
 						var selectedDate = yyyy + '-' + mm + '-' + dd;
+						var selectedUser = $("#assigned_user_id").val();
 						VtigerJS_DialogBox.block();
-						location.href = 'index.php?module=DART&action=index&_date=' + encodeURIComponent(selectedDate)
+						location.href = 'index.php?module=DART&action=index&_date=' + encodeURIComponent(selectedDate) + '&_user=' + encodeURIComponent(selectedUser)
 					{rdelim}
 				{rdelim});
 			</script>

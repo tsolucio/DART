@@ -6,7 +6,7 @@
  * Portions created by vtiger are Copyright (C) vtiger.
  * All Rights Reserved.
  ************************************************************************************}
-<p>{$SITE_URL}</p>
+
 <p class=" slds-page-header__meta-text">
 {if $CHANGES}
 	<i>{'LBL_UPDATES_FOR'|@getTranslatedString:$MODULE} <b>{$DAY}</b></i>
@@ -14,9 +14,18 @@
 	<i>{'LBL_NO_UPDATES'|@getTranslatedString:$MODULE}<b>{$DAY}</b></i>
 {/if}
 {if $DAY == $TODAY}
-	<img src='{$BASEURL}themes/images/reload.gif' border=0> <a href='{$BASEURL}index.php?module={$MODULE}&action=index&_refresh=true'>{'LBL_REFRESH_NOW'|@getTranslatedString:$MODULE}</a>
+	<img src='{$BASEURL}themes/images/reload.gif' border=0>
+	<button type="button" class="slds-button slds-button_brand slds-m-bottom_medium" style="min-width: fit-content;" onclick="indexRefresh('{$BASEURL}','{$MODULE}');">
+		{'LBL_REFRESH_NOW'|@getTranslatedString:$MODULE}
+	</button>
 {/if}
 </p>
 {if $CHANGES}
 	{include file='modules/DART/htmlscrreport.tpl'}
 {/if}
+<script type="text/javascript">
+	function indexRefresh(baseurl,module) {
+		var todayUser = $('#assigned_user_id').val();
+		location.href = baseurl+'index.php?module='+module+'&action=index&_refresh=true&_todayUser='+encodeURIComponent(todayUser);
+	}
+</script>

@@ -13,7 +13,7 @@ $mod_strings = array(
 
 'LBL_NOTE_TEXT' => 'Para receber um e-mail do relatório necessita de agendar o serviço "Agendar Relatório", de preferência ao final de cada dia.',
 'LBL_SELECT_TEXT' => 'Please select a date to display activity below',
-
+'LBL_SELECT_USER' => 'Please select a user tu see his activity',
 'LBL_UPDATES_FOR' => 'Em seguida são as atualizações para ',
 'LBL_NO_UPDATES'  => 'Sem atualizações disponíveis para ',
 'LBL_REFRESH_NOW' => 'Recarregar agora',

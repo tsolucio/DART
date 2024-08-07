@@ -13,7 +13,7 @@ $mod_strings = array(
 
 'LBL_NOTE_TEXT' => 'To receive email of the report you need to schedule the DART Cron service, preferably at end-of-every day.',
 'LBL_SELECT_TEXT' => 'Please select a date to display activity below',
-
+'LBL_SELECT_USER' => 'Please select a user tu see his activity',
 'LBL_UPDATES_FOR' => 'Following are the updates for ',
 'LBL_NO_UPDATES'  => 'No updates available for ',
 'LBL_REFRESH_NOW' => 'Refresh now',

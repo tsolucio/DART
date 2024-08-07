@@ -13,7 +13,7 @@ $mod_strings = array(
 
 'LBL_NOTE_TEXT' => 'Para recibir un email con el informe, hay que activar el servicio de tarea programada, preferiblemente al final del día.',
 'LBL_SELECT_TEXT' => 'Selecciona una fecha para ver la actividad aquí',
-
+'LBL_SELECT_USER' => 'Selecciona un usuario para ver su actividad',
 'LBL_UPDATES_FOR' => 'Estas son las actualizaciones disponibles para ',
 'LBL_NO_UPDATES'  => 'No hay actualizaciones disponibles para ',
 'LBL_REFRESH_NOW' => 'Actualizar ahora',
