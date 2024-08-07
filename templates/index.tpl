@@ -18,7 +18,7 @@
 			<div id='_cal' style="max-width: 310px;" class="slds-m-left_small"></div>
 			<script type="text/javascript">
 				Calendar.setup({ldelim}
-					date: "{'-'|@str_replace:'/':$DAY}",
+					date: "{$DAY|replace:'-':'/'}",
 					flat: "_cal",
 					flatCallback : function(cal) {ldelim}
 						var yyyy = cal.date.getFullYear(), mm = cal.date.getMonth()+1, dd = cal.date.getDate();
