@@ -165,7 +165,7 @@ class DART_Core {
 	 */
 	public function permittedToView($module, $crmid) {
 		if ($this->activeUser !== false) {
-			return (isPermitted($module, 'DetailView', $crmid) == 'yes');
+			return isPermitted($module, 'DetailView', $crmid) == 'yes';
 		}
 		return true;
 	}
@@ -175,14 +175,10 @@ class DART_Core {
 	 */
 	public function record_ChangesForTheDay($date) {
 		global $adb;
-
-		$sql = 'SELECT setype, crmid, smownerid, modifiedby FROM vtiger_crmentity WHERE DATE(modifiedtime)=?';
-		$result = $adb->pquery($sql, array($date));
-
+		$result = $adb->pquery('SELECT setype, crmid, smownerid, modifiedby FROM vtiger_crmentity WHERE DATE(modifiedtime)=?', array($date));
 		if (!$adb->num_rows($result)) {
 			return;
 		}
-
 		while ($row = $adb->fetch_array($result)) {
 			$this->record_ChangesForTheModule($row['setype'], $row['crmid'], $row['smownerid'], $row['modifiedby'], $date);
 		}
@@ -193,8 +189,10 @@ class DART_Core {
 	 */
 	public function record_ChangesForTheModule($module, $crmid, $smownerid, $modifiedby, $date) {
 		global $adb;
-		$sql = 'INSERT IGNORE INTO vtiger_dart_recordchanges(module, crmid, smownerid, modifiedby, modifiedon) VALUES (?, ?, ?, ?, ?)';
-		$adb->pquery($sql, array($module, $crmid, $smownerid, $modifiedby, $date));
+		$adb->pquery(
+			'INSERT IGNORE INTO vtiger_dart_recordchanges(module, crmid, smownerid, modifiedby, modifiedon) VALUES (?,?,?,?,?)',
+			array($module, $crmid, $smownerid, $modifiedby, $date)
+		);
 	}
 }
 ?>
