@@ -41,6 +41,7 @@ $smarty->assign('IMAGE_PATH', "themes/$theme/images/");
 $smarty->assign('MOD', $mod_strings);
 $smarty->assign('APP', $app_strings);
 include 'modules/cbupdater/forcedButtons.php';
+$tool_buttons['CreateView'] = 'no';
 $smarty->assign('CHECK', $tool_buttons);
 $smarty->assign('SITE_URL', $site_URL);
 
