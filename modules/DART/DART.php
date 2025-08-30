@@ -175,7 +175,10 @@ class DART_Core {
 	 */
 	public function record_ChangesForTheDay($date) {
 		global $adb;
-		$result = $adb->pquery('SELECT setype, crmid, smownerid, modifiedby FROM vtiger_crmentity WHERE DATE(modifiedtime)=?', array($date));
+		$result = $adb->pquery(
+			'SELECT setype, crmid, smownerid, modifiedby FROM vtiger_crmentity WHERE modifiedtime between ? and ?',
+			array($date . ' 00:00:00', $date . ' 23:59:59')
+		);
 		if (!$adb->num_rows($result)) {
 			return;
 		}
