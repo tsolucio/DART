@@ -29,8 +29,9 @@
   `modifiedby` int(11) DEFAULT NULL,
   `modifiedon` date DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `unique_cols_constraint` (`module`,`crmid`,`smownerid`,`modifiedby`,`modifiedon`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8]]></sql>
+  UNIQUE KEY `unique_cols_constraint` (`module`,`crmid`,`smownerid`,`modifiedby`,`modifiedon`),
+  KEY `idx_modifiedon` (`modifiedon`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;]]></sql>
 </table>
 </tables>
 <crons>
